@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Router::post('/register', [AuthController::class, 'register']);
 Router::post('/login', [AuthController::class, 'login']);
 
-Route::middleware({'auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
 
     //menambahkan data student
     Route::get('students', [StudentController::class, 'index'])->middleware('auth:sanctum');
@@ -33,7 +33,7 @@ Route::middleware({'auth:sanctum'])->group(function () {
     Route::post('students', [StudentController::class, 'store'])->middleware('auth:sanctum');
 
     Route::put('students/{id}', [StudentController::class, 'update'])->middleware('auth:sanctum');
-
+    
     Route::delete('students/{id}', [StudentController::class, 'destroy'])->middleware('auth:sanctum');
 
     Route::get('students/{id}', [StudentController::class, 'show'])->middleware('auth:sanctum');
